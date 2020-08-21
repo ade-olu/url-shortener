@@ -150,6 +150,11 @@ a {
 .a-list {
   color: $grayish-violet;
   -webkit-tap-highlight-color: transparent !important;
+  transition: all 250ms ease;
+
+  &:hover {
+    color: $v-dark-blue;
+  }
 }
 
 // Nav Menu (Right)

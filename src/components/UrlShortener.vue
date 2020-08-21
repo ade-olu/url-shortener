@@ -51,7 +51,8 @@
       <div class="s-links-bg">
         <div class="s-links-div">
         <p class="sh-links"></p>
-        <a :href="link" target="_blank"><p class="sh-links-2">{{ link }}</p></a>
+        <div class="h-line"></div>
+        <a :href="link" target="_blank" class="a-sh-links"><p class="sh-links-2">{{ link }}</p></a>
           <!-- Copy Button -->
           <div class="cy-bg">
           <button class="cy" v-clipboard:copy="parsedUrl" v-clipboard:success="onCopy">Copy</button>
@@ -142,7 +143,7 @@
 export default {
   name: 'UrlShortener',
   data() {
-        return{
+        return {
             url: '',
             isLoading: false,
             isReady: false,
@@ -158,24 +159,20 @@ export default {
             this.isLoading = true;
             this.isReady = false;
             this.$http.post('https://rel.ink/api/links/', {"url": this.url})
+
             .then(res=> {
                 this.isLoading = false;
                 this.parsedUrl = `https://rel.ink/${res.body.hashid}`;
                 this.isReady = true;
                 this.links.push(this.parsedUrl);
                 localStorage.setItem("links", JSON.stringify(this.links));
-
-                /*if (this.url) {
-                this.links.push(this.url)
-                this.url = ''
-            }*/
             })
             .catch(err => {
                 this.errorMessage = err;
                 this.error = true;
                 console.log(err)
             })
-
+            
         },
         onCopy() {
             this.copied = true;
@@ -301,6 +298,10 @@ button {
   outline: none !important;
   transition: all 250ms ease !important;
 
+  &:hover {
+    opacity: 0.6 !important;
+  }
+
 &:active {
     transform: scale(0.98) !important;
 }
@@ -370,6 +371,10 @@ button {
   margin-left: 2em !important;
   transition: all 250ms ease !important;
 
+  &:hover {
+    opacity: 0.8 !important;
+  }
+
 &:active {
     transform: scale(0.98) !important;
 }
@@ -407,7 +412,10 @@ button {
   right: 14%;
   transform: translate(-14%, -50%) !important;
   color: $cyan;
-  text-decoration: none;
+}
+
+.a-sh-links {
+  text-decoration: none !important;
 }
 
 // Copy Btn
@@ -434,6 +442,10 @@ button {
   outline: none !important;
   transition: all 250ms ease !important;
 
+  &:hover {
+    opacity: 0.6 !important;
+  }
+
 &:active {
     transform: scale(0.98) !important;
 }
@@ -454,7 +466,7 @@ button {
 
 .h-2 {
   color: $v-dark-blue;
-  padding-top: 1em !important;
+  padding-top: 0.5em !important;
   margin-bottom: 0.2em !important;
 }
 
@@ -880,9 +892,66 @@ button {
   padding: 0.6em 0 0.6em 0em !important;
   }
 
+// Shorten It Btn
+.s {
+  margin-top: 1.5em !important;
+  width: auto;
+  height: auto;
+  padding: 0.6em 2em 0.6em 2em !important;
+  }
+
+  // Shortened Links
+  .s-links-div {
+    width: 100%;
+  }
+
+  .s-links-bg {
+    height: 10em !important;
+  }
+
+  .sh-links {
+  position: relative;
+  margin-left: 1em !important;
+  }
+
+  .sh-links-2 {
+  position: relative;
+  top: 0%;
+  right: 0% !important;
+  transform: translate(0%, 0%) !important;
+  margin-left: 1em !important;
+  }
+
+  // Copy Btn
+.cy-bg {
+  position: relative;
+  top: 0%;
+  right: 0% !important;
+  transform: translate(0%, 0%) !important;
+  margin-top: 1em !important;
+  margin-left: 1em !important;
+  margin-right: 1em !important;
+}
+
+.cy {
+  width: 300px;
+  height: auto;
+  padding: 0.6em 2em 0.6em 2em !important;
+}
+
+// Line
+.h-line {
+      margin-top: 0.5em !important;
+      margin-bottom: 0.5em !important;
+      width: 100%;
+      height: 0.1em;
+      border-radius: 30px;
+      background: $grayish-violet;
+    }
+
 .h-2 {
   font-size: 1.65em !important;
-  padding-top: 2.5em !important;
+  padding-top: 0.5em !important;
 }
 
 .t-2-br-1 {
@@ -998,9 +1067,29 @@ button {
   padding: 0.6em 0 0.6em 0em !important;
   }
 
+  .sh-links {
+  margin-left: 1.2em !important;
+  }
+
+  .sh-links-2 {
+  margin-left: 1.2em !important;
+  }
+
+  // Copy Btn
+  .cy-bg {
+  margin-left: 1.2em !important;
+  margin-right: 1.2em !important;
+}
+
+  .cy {
+  width: 264px;
+  height: auto;
+  padding: 0.6em 2em 0.6em 2em !important;
+}
+
 .h-2 {
   font-size: 1.65em !important;
-  padding-top: 2.5em !important;
+  padding-top: 0.5em !important;
 }
 
 .t-2-br-1 {

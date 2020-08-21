@@ -10,21 +10,21 @@
     </a>
   <!-- Features (Footer) -->
       <ul class="f-l">
-        <li class="l-ft h-ft"><a href="#" class="a-ft"><b>Features</b></a></li>
+        <li class="l-ft h-ft"><b>Features</b></li>
         <li class="l-ft"><a href="#urlShortener" class="a-ft">Link Shortening</a></li>
         <li class="l-ft"><a href="#" class="a-ft">Branded Links</a></li>
         <li class="l-ft"><a href="#features" class="a-ft">Analytics</a></li>
       </ul>
       <!-- Resources (Footer) -->
       <ul class="f-l">
-        <li class="l-ft h-ft"><a href="#" class="a-ft"><b>Resources</b></a></li>
+        <li class="l-ft h-ft"><b>Resources</b></li>
         <li class="l-ft"><a href="#" class="a-ft">Blog</a></li>
         <li class="l-ft"><a href="#" class="a-ft">Developers</a></li>
         <li class="l-ft"><a href="#" class="a-ft">Support</a></li>
       </ul>
       <!-- Company (Footer) -->
       <ul class="f-l">
-        <li class="l-ft h-ft"><a href="#" class="a-ft"><b>Company</b></a></li>
+        <li class="l-ft h-ft"><b>Company</b></li>
         <li class="l-ft"><a href="#" class="a-ft">About</a></li>
         <li class="l-ft"><a href="#" class="a-ft">Our Team</a></li>
         <li class="l-ft"><a href="#" class="a-ft">Careers</a></li>
@@ -125,6 +125,11 @@ a {
 .a-ft {
   font-size: 16px;
   color: $gray;
+  transition: all 250ms ease !important;
+
+  &:hover {
+    color: $cyan;
+  }
 }
 
 .h-ft {
@@ -151,6 +156,10 @@ a {
   font-size: 24px;
   color: #fff;
   transition: all 250ms ease !important;
+
+  &:hover {
+    color: $cyan;
+  }
 
 &:active {
     transform: scale(0.98) !important;

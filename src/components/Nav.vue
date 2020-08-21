@@ -193,6 +193,10 @@ a {
   outline: none !important;
   transition: all 250ms ease !important;
 
+  &:hover {
+    opacity: 0.6 !important;
+  }
+
   &:active {
     transform: scale(0.98) !important;
 }
@@ -354,6 +358,10 @@ $bar-spacing: 8px;
   width: 150px !important;
   height: auto;
   padding: 0.5em 1.5em 0.5em 1.5em !important;
+
+  &:hover {
+    opacity: 0.8 !important;
+  }
   }
 
     .fade {

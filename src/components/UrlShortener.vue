@@ -990,7 +990,7 @@ button {
 }
 
 .i-bg {
-  margin-top: -25% !important;
+  margin-top: -24% !important;
   }
 
   .b-bg {
@@ -1123,7 +1123,7 @@ button {
 }
 
 .i-bg {
-  margin-top: -25% !important;
+  margin-top: -24% !important;
   }
 
   .b-bg {

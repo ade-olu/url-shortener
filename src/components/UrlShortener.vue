@@ -61,7 +61,8 @@
       <div class="s-links-bg-2" v-for="link in links" :key="link">
       <ul class="ul-s-links">
         <li class="l-s-links">
-          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a></li>
+          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a>
+          </li>
       </ul>
       </div>
       </div>
@@ -695,6 +696,10 @@ button {
   left: 50%;
   transform: translate(-50%, -62%) !important;
   }
+
+  .h-2 {
+  padding-top: 0.2em !important;
+}
 }
 
 // 768px
@@ -759,6 +764,10 @@ button {
   transform: translate(0%, 0%) !important;
   margin-top: 1em !important;
   margin-left: 0.8em !important;
+}
+
+.h-2 {
+  padding-top: 0.4em !important;
 }
 
   // Features
@@ -942,7 +951,7 @@ button {
 
 .h-2 {
   font-size: 1.65em !important;
-  padding-top: 0.5em !important;
+  padding-top: 0.2em !important;
 }
 
 .t-2-br-1 {
@@ -1076,11 +1085,6 @@ button {
 
 .a-sh-links-2 {
   margin-left: 1.8em !important;
-}
-
-.h-2 {
-  font-size: 1.65em !important;
-  padding-top: 0.5em !important;
 }
 
 .t-2-br-1 {

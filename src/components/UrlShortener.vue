@@ -836,8 +836,8 @@ button {
   }
 }
 
-// 414px
-@media screen and (max-width: 414px) {
+// 575px
+@media screen and (max-width: 575px) {
   // Top Div
   .top {
     padding-bottom: 10% !important;

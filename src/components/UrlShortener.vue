@@ -40,33 +40,39 @@
       <div class="space">
       </div>
 
-      <!-- Spacing Div -->
-      <div class="space">
-      </div>
-
       <!-- Shortened Links -->
-      <div class="sh-con" v-for="link in links" :key="link">
-
+      <div class="sh-con">  
       <div class="sh-l-bg">
-      <div class="s-links-bg">
+      <div class="s-links-bg" v-if="isReady">
         <div class="s-links-div">
-        <p class="sh-links"></p>
-        <div class="h-line"></div>
-        <a :href="link" target="_blank" class="a-sh-links"><p class="sh-links-2">{{ link }}</p></a>
+        <a :href="parsedUrl" target="_blank" class="a-sh-links"><p class="sh-links">{{ parsedUrl }}</p></a>
           <!-- Copy Button -->
           <div class="cy-bg">
-          <button class="cy" v-clipboard:copy="parsedUrl" v-clipboard:success="onCopy">Copy</button>
+          <button class="cy" v-clipboard:copy="parsedUrl" v-clipboard:success="onCopy" v-bind:class="{ change: isActive }">
+            <span v-if="!isLoading && !copied">Copy</span>
+            <span v-if="copied">Copied!</span>
+          </button>
           </div>
         </div>
       </div>
-        
-        <!-- Spacing Div -->
+
+      <!-- Links -->
+      <div class="sh-l-bg-2">
+      <div class="s-links-bg-2">
+      <ul class="ul-s-links">
+        <li class="l-s-links" v-for="link in links" :key="link">
+          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a>
+          <div class="h-line"></div></li>
+      </ul>
+      </div>
+      </div>
+
+      <!-- Spacing Div -->
       <div class="space">
       </div>
+      
       </div>
       
-      
-
       </div>
 
     <!-- Bottom -->
@@ -151,7 +157,9 @@ export default {
             error: false,
             errorMessage: '',
             copied: '',
-            links: []
+            links: [],
+            copyText: 'Copy',
+            isActive: false
         }
     },
     methods: {
@@ -176,11 +184,13 @@ export default {
         },
         onCopy() {
             this.copied = true;
-            setTimeout(()=>{
+            this.isActive = !this.isActive
+            setTimeout(()=> {
                 this.copied = false;
-            }, 3000)
+                this.isActive = !this.isActive
+            }, 2500)
         },
-        getLinks(){       
+        getLinks() {       
             if (localStorage.getItem('links')) this.links = JSON.parse(localStorage.getItem('links'));
         }
     },
@@ -381,7 +391,7 @@ button {
 }
 
 // Shortened Links
-.sh-l-bg {
+.sh-l-bg, .sh-l-bg-2 {
   background: $light-violet;
 }
 
@@ -406,16 +416,9 @@ button {
   font-size: 18px;
 }
 
-.sh-links-2 {
-  position: absolute;
-  top: 50%;
-  right: 14%;
-  transform: translate(-14%, -50%) !important;
-  color: $cyan;
-}
-
 .a-sh-links {
   text-decoration: none !important;
+  color: $cyan;
 }
 
 // Copy Btn
@@ -451,12 +454,47 @@ button {
 }
 }
 
+.change {
+  background: $dark-violet;
+}
+
 // Spacing Div
 .space {
   width: 100%;
   height: auto;
   background: $light-violet;
   padding: 0 0 2em 0 !important;
+}
+
+// Line
+.h-line {
+      margin-top: 0.5em !important;
+      margin-bottom: 0.5em !important;
+      width: 100%;
+      height: 0.1em;
+      border-radius: 30px;
+      background: $grayish-violet;
+    }
+
+// Links Div
+.s-links-bg-2 {
+  position: relative;
+  width: 82%;
+  height: auto;
+  background: #fff;
+  padding: 1.5em 0 1.5em 0 !important;
+  margin: 0 8% 2em 8% !important;
+  border-radius: 8px;
+}
+
+.ul-s-links {
+  list-style-type: none;
+}
+
+.a-sh-links-2 {
+  text-decoration: none !important;
+  color: $cyan;
+  margin-left: 2em !important;
 }
 
 // Text 2
@@ -662,13 +700,6 @@ button {
   padding: 0.6em 2em 0.6em 2em !important;
   }
 
-  .sh-links-2 {
-  position: absolute;
-  top: 50%;
-  right: 16%;
-  transform: translate(-16%, -50%) !important;
-}
-
   .bg-l {
   position: absolute;
   top: 62%;
@@ -728,14 +759,7 @@ button {
 
   .sh-links {
   position: relative;
-  margin-left: 2em !important;
-  }
-
-  .sh-links-2 {
-  position: absolute;
-  top: 0%;
-  right: 5% !important;
-  transform: translate(-5%, 0%) !important;
+  margin-left: 0.8em !important;
   }
 
   // Copy Btn
@@ -745,7 +769,7 @@ button {
   right: 0% !important;
   transform: translate(0%, 0%) !important;
   margin-top: 1em !important;
-  margin-left: 2em !important;
+  margin-left: 0.8em !important;
 }
 
   // Features
@@ -895,31 +919,19 @@ button {
 // Shorten It Btn
 .s {
   margin-top: 1.5em !important;
-  width: auto;
+  width: 15em;
   height: auto;
   padding: 0.6em 2em 0.6em 2em !important;
   }
 
   // Shortened Links
-  .s-links-div {
-    width: 100%;
-  }
-
   .s-links-bg {
     height: 10em !important;
   }
 
   .sh-links {
   position: relative;
-  margin-left: 1em !important;
-  }
-
-  .sh-links-2 {
-  position: relative;
-  top: 0%;
-  right: 0% !important;
-  transform: translate(0%, 0%) !important;
-  margin-left: 1em !important;
+  margin-left: 1.2em !important;
   }
 
   // Copy Btn
@@ -929,25 +941,15 @@ button {
   right: 0% !important;
   transform: translate(0%, 0%) !important;
   margin-top: 1em !important;
-  margin-left: 1em !important;
-  margin-right: 1em !important;
+  margin-left: 1.2em !important;
+  margin-right: 1.2em !important;
 }
 
 .cy {
-  width: 300px;
+  width: 15em;
   height: auto;
   padding: 0.6em 2em 0.6em 2em !important;
 }
-
-// Line
-.h-line {
-      margin-top: 0.5em !important;
-      margin-bottom: 0.5em !important;
-      width: 100%;
-      height: 0.1em;
-      border-radius: 30px;
-      background: $grayish-violet;
-    }
 
 .h-2 {
   font-size: 1.65em !important;
@@ -1071,10 +1073,6 @@ button {
   margin-left: 1.2em !important;
   }
 
-  .sh-links-2 {
-  margin-left: 1.2em !important;
-  }
-
   // Copy Btn
   .cy-bg {
   margin-left: 1.2em !important;
@@ -1082,9 +1080,13 @@ button {
 }
 
   .cy {
-  width: 264px;
+  width: 13.2em;
   height: auto;
   padding: 0.6em 2em 0.6em 2em !important;
+}
+
+.a-sh-links-2 {
+  margin-left: 1.8em !important;
 }
 
 .h-2 {
@@ -1148,6 +1150,10 @@ button {
   left: -20%;
   transform: translate(20%, -50%) !important;
   z-index: 1 !important;
+  }
+
+  .cy {
+  width: 12.9em;
   }
 }
 

@@ -1,4 +1,4 @@
-# Shortly
+# Shortly 
 
 ## Project setup
 ```

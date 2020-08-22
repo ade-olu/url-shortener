@@ -13,7 +13,7 @@ import Nav from './components/Nav.vue'
 import Footer from './components/Footer.vue'
 
 export default {
-  name: 'App',
+  name: 'App'
   components: {
     'url-shortener': UrlShortener,
     'page-nav': Nav,

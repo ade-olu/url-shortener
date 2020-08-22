@@ -374,8 +374,8 @@ $bar-spacing: 8px;
     }
 }
 
-// 414px
-@media screen and (max-width: 414px) {
+// 575px
+@media screen and (max-width: 575px) {
   .m-nav {
     width: 65%;
   }

@@ -58,11 +58,10 @@
 
       <!-- Links -->
       <div class="sh-l-bg-2">
-      <div class="s-links-bg-2">
+      <div class="s-links-bg-2" v-for="link in links" :key="link">
       <ul class="ul-s-links">
-        <li class="l-s-links" v-for="link in links" :key="link">
-          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a>
-          <div class="h-line"></div></li>
+        <li class="l-s-links">
+          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a></li>
       </ul>
       </div>
       </div>
@@ -465,16 +464,6 @@ button {
   background: $light-violet;
   padding: 0 0 2em 0 !important;
 }
-
-// Line
-.h-line {
-      margin-top: 0.5em !important;
-      margin-bottom: 0.5em !important;
-      width: 100%;
-      height: 0.1em;
-      border-radius: 30px;
-      background: $grayish-violet;
-    }
 
 // Links Div
 .s-links-bg-2 {

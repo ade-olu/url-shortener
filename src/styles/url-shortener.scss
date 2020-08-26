@@ -189,16 +189,27 @@
   
   .s-links-div {
     position: absolute;
-    width: 92%;
+    width: 93%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
   }
   
-  .sh-links {
+  .sh-links, .sh-links-2 {
     font-size: 18px;
   }
+
+  .sh-links {
+      width: 50%;
+  }
   
+  .sh-links-2 {
+      position: absolute;
+      top: 50%;
+      right: 14%;
+      transform: translate(-14%, -50%) !important;
+  }
+
   .a-sh-links {
     text-decoration: none !important;
     color: $cyan;
@@ -267,7 +278,18 @@
   .a-sh-links-2 {
     text-decoration: none !important;
     color: $cyan;
+  }
+
+  .l-s-links-1 {
+    width: 50% !important;
     margin-left: 2em !important;
+  }
+
+  .l-s-links-2 {
+    position: absolute;
+      top: 50%;
+      right: 3.6%;
+      transform: translate(-3.6%, -50%) !important;
   }
   
   // Text 2
@@ -472,6 +494,13 @@
     height: auto;
     padding: 0.6em 2em 0.6em 2em !important;
     }
+
+    .sh-links-2 {
+        position: absolute;
+        top: 50%;
+        right: 16%;
+        transform: translate(-16%, -50%) !important;
+    }
   
     .bg-l {
     position: absolute;
@@ -531,12 +560,19 @@
   
     // Shortened Links
     .s-links-bg {
-      height: 8em !important;
+      height: 15em !important;
     }
   
     .sh-links {
     position: relative;
     margin-left: 0.8em !important;
+    }
+
+    .sh-links-2 {
+        position: absolute;
+        top: 0;
+        right: 2%;
+        transform: translate(-2%, 0) !important;
     }
   
     // Copy Btn
@@ -547,6 +583,17 @@
     transform: translate(0%, 0%) !important;
     margin-top: 1em !important;
     margin-left: 0.8em !important;
+  }
+
+  .l-s-links-1 {
+      width: 40% !important;
+  }
+
+  .l-s-links-2 {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-5%, -50%) !important;
   }
   
   .h-2 {
@@ -619,8 +666,8 @@
     }
   }
   
-  // 414px
-  @media screen and (max-width: 414px) {
+  // 575px
+  @media screen and (max-width: 575px) {
     // Top Div
     .top {
       padding-bottom: 10% !important;
@@ -707,12 +754,36 @@
   
     // Shortened Links
     .s-links-bg {
-      height: 10em !important;
+      height: auto !important;
+    }
+
+    .s-links-div {
+        padding: 2em !important;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0) !important;
+        width: 100%;
     }
   
     .sh-links {
-    position: relative;
-    margin-left: 1.2em !important;
+    position: relative !important;
+    margin-left: 2em !important;
+    width: 25% !important;
+    }
+
+    .sh-links-2 {
+        position: relative !important;
+        margin-left: 2.8em !important;
+        }
+
+    .h-line {
+        margin-top: 1em !important;
+        margin-bottom: 1em !important;
+        width: 100%;
+        height: 0.08em;
+        border-radius: 30px;
+        background: $grayish-violet;
     }
   
     // Copy Btn
@@ -722,8 +793,8 @@
     right: 0% !important;
     transform: translate(0%, 0%) !important;
     margin-top: 1em !important;
-    margin-left: 1.2em !important;
-    margin-right: 1.2em !important;
+    margin-left: 2em !important;
+    margin-right: 2em !important;
   }
   
   .cy {
@@ -732,6 +803,18 @@
     padding: 0.6em 2em 0.6em 2em !important;
   }
   
+  .l-s-links-1 {
+    width: 25% !important;
+}
+
+.l-s-links-2 {
+  position: relative;
+  top: 0;
+  right: 0;
+  transform: translate(0, 0) !important;
+  margin-left: 2em !important;
+}
+
   .h-2 {
     font-size: 1.65em !important;
     padding-top: 0.2em !important;
@@ -851,23 +934,19 @@
     }
   
     .sh-links {
-    margin-left: 1.2em !important;
+    margin-left: 2em !important;
     }
   
     // Copy Btn
     .cy-bg {
-    margin-left: 1.2em !important;
-    margin-right: 1.2em !important;
+    margin-left: 2em !important;
+    margin-right: 2em !important;
   }
   
     .cy {
     width: 13.2em;
     height: auto;
     padding: 0.6em 2em 0.6em 2em !important;
-  }
-  
-  .a-sh-links-2 {
-    margin-left: 1.8em !important;
   }
   
   .t-2-br-1 {

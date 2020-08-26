@@ -45,10 +45,12 @@
       <div class="sh-l-bg">
       <div class="s-links-bg" v-if="isReady">
         <div class="s-links-div">
-        <a :href="parsedUrl" target="_blank" class="a-sh-links"><p class="sh-links">{{ parsedUrl }}</p></a>
+        <p class="sh-links">{{ mainUrl }}</p>
+        <div class="h-line"></div>
+        <a :href="linkUrl" target="_blank" class="a-sh-links"><p class="sh-links-2">{{ linkUrl }}</p></a>
           <!-- Copy Button -->
           <div class="cy-bg">
-          <button class="cy" v-clipboard:copy="parsedUrl" v-clipboard:success="onCopy" v-bind:class="{ change: isActive }">
+          <button class="cy" v-clipboard:copy="linkUrl" v-clipboard:success="onCopy" v-bind:class="{ change: isActive }">
             <span v-if="!isLoading && !copied">Copy</span>
             <span v-if="copied">Copied!</span>
           </button>
@@ -58,10 +60,14 @@
 
       <!-- Links -->
       <div class="sh-l-bg-2">
-      <div class="s-links-bg-2" v-for="link in links" :key="link">
+      <div class="s-links-bg-2" v-for="link in links" :key="link.hashid">
       <ul class="ul-s-links">
-        <li class="l-s-links">
-          <a :href="link" target="_blank" class="a-sh-links-2">{{ link }}</a>
+        <!-- Main Link -->
+        <li class="l-s-links-1">{{ link.urlLink }}</li>
+        <div class="h-line"></div>
+        <!-- Shortened Link -->
+          <li class="l-s-links-2">
+          <a :href="link.parsedUrl" target="_blank" class="a-sh-links-2">{{ link.parsedUrl }}</a>
           </li>
       </ul>
       </div>
@@ -151,9 +157,12 @@ export default {
   data() {
         return {
             url: '',
+            linkUrl: '',
+            parsedUrl: '',
+            urlLink: '',
+            mainUrl: '',
             isLoading: false,
             isReady: false,
-            parsedUrl: '',
             error: false,
             errorMessage: '',
             copied: '',
@@ -170,17 +179,23 @@ export default {
 
             .then(res=> {
                 this.isLoading = false;
-                this.parsedUrl = `https://rel.ink/${res.body.hashid}`;
                 this.isReady = true;
-                this.links.push(this.parsedUrl);
+                this.linkUrl = `https://rel.ink/${res.body.hashid}`;
+                this.mainUrl = `${res.data.url}`;
                 localStorage.setItem("links", JSON.stringify(this.links));
+
+                let data = {
+                  parsedUrl : `https://rel.ink/${res.body.hashid}`,
+                  urlLink: `${res.data.url}`
+                };
+
+                this.links.unshift(data);
             })
             .catch(err => {
                 this.errorMessage = err;
                 this.error = true;
                 console.log(err)
             })
-            
         },
         onCopy() {
             this.copied = true;

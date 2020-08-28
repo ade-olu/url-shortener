@@ -176,8 +176,9 @@ export default {
     methods: {
         trimUrl() {
           if (this.url == "") {
+            this.er = true;
               setTimeout(()=> {
-                this.er = true;
+                this.er = false;
             }, 2500)
               } else {
               this.er = false;

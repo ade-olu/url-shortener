@@ -145,6 +145,24 @@
     margin-left: 2em !important;
     color: $v-dark-violet !important;
   }
+
+  .shortener-form input.error {
+    border: 2px solid rgb(226, 64, 64) !important;
+  }
+  .shortener-form input.error::placeholder {
+    color: rgb(226, 64, 64) !important;
+  }
+
+  .error-text {
+    color: rgb(226, 64, 64) !important;
+    font-style: italic !important;
+    margin-top: 0.5em !important;
+    margin-left: 2em !important;
+  }
+
+  .md {
+    height: 10em !important;
+  }
   
   // Shorten It Btn
   .s {
@@ -469,6 +487,10 @@
     background: $dark-violet;
     margin: 0 8% 0 8% !important;
     border-radius: 8px;
+    }
+
+    .md {
+      height: 14em !important;
     }
   
   .u-s-div {

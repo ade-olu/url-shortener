@@ -26,7 +26,7 @@
         <div class="u-s-div">
           <form @submit.prevent="trimUrl">
         <!-- URL Shortener Input -->
-        <input class="u-s-i" type="text" placeholder="Shorten a link here..." v-model="url" required>
+        <input class="u-s-i" type="text" name="text" placeholder="Shorten a link here..." v-model="url" required>
           <!-- Shorten Button -->
           <button class="s">Shorten It!</button>
           </form>

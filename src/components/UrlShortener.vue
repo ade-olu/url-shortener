@@ -22,14 +22,15 @@
 
     <!-- Middle -->
     <div class="middle">
-      <div class="mid" id="urlShortener">
+      <div class="mid" id="urlShortener" :class="{ md: er }">
         <div class="u-s-div">
-          <form @submit.prevent="trimUrl">
+          <form class="shortener-form" @submit.prevent="trimUrl">
         <!-- URL Shortener Input -->
-        <input class="u-s-i" type="text" name="text" placeholder="Shorten a link here..." v-model="url" required>
+        <input class="u-s-i" type="text" name="text" placeholder="Shorten a link here..." v-model="url" :class="{ error: er }">
           <!-- Shorten Button -->
           <button class="s">Shorten It!</button>
           </form>
+          <p v-if="er" class="error-text">Please add a link</p>
         </div>
         <!-- Bg Design -->
         <div class="m-bg"></div>
@@ -164,6 +165,7 @@ export default {
             isLoading: false,
             isReady: false,
             error: false,
+            er: false,
             errorMessage: '',
             copied: '',
             links: [],
@@ -173,6 +175,14 @@ export default {
     },
     methods: {
         trimUrl() {
+          if (this.url == "") {
+              setTimeout(()=> {
+                this.er = true;
+            }, 2500)
+              } else {
+              this.er = false;
+             }
+             
             this.isLoading = true;
             this.isReady = false;
             this.$http.post('https://rel.ink/api/links/', {"url": this.url})
